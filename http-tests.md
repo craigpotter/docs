@@ -305,14 +305,15 @@ class ExampleTest extends TestCase
 }
 ```
 
-Alternatively, you may use the `dd`, `ddHeaders`, `ddSession`, and `ddJson` methods to dump information about the response and then stop execution:
+Alternatively, you may use the `dd`, `ddBody`, `ddHeaders`, `ddSession`, and `ddJson` methods to dump information about the response and then stop execution:
 
 ```php tab=Pest
 <?php
 
 test('basic test', function () {
     $response = $this->get('/');
-
+    
+    $response->ddBody();
     $response->ddHeaders();
     $response->ddSession();
     $response->ddJson();
@@ -336,6 +337,8 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
+        $response->ddBody();
+        
         $response->ddHeaders();
 
         $response->ddSession();
